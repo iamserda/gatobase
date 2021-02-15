@@ -23,16 +23,21 @@ input {
     display: block;
 }
 
-.app {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    min-width: min-content;
-}
+
+/* DRY */
 
 .container {
     display: flex;
+    flex-flow: column nowrap;
+}
+
+.app {
+    margin: 0;
+    padding: 0;
+    min-width: min-content;
     flex-flow: row nowrap;
+    min-height: 100vh;
+    min-width: 320px;
 }
 
 
@@ -58,23 +63,18 @@ input {
 
 .dark-veil {
     background-color: rgba(0, 0, 0, 0.5);
-    margin: 0;
-    flex-flow: row nowrap;
-    align-items: center;
-    min-height: 100%;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .dark-veil>* {
-    width: 70%;
-    margin: 0 auto;
+    width: 80%;
+    margin: 1em auto;
 }
 
 .content {
-    flex-flow: column nowrap;
     align-content: center;
-    align-items: center;
-    min-width: fit-content;
-    /* border: 2px solid white; */
+    margin: 1em auto;
 }
 
 .brand {
@@ -101,20 +101,6 @@ input {
     font-weight: bold;
 }
 
-.photographer {
-    font-size: 0.85rem;
-}
-
-.photographer a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.photographer a:hover {
-    color: #ff8d22;
-}
-
 .call-to-action {
     font-size: 1.5rem;
     margin: 2em auto 1em;
@@ -122,14 +108,27 @@ input {
     font-weight: bold;
 }
 
-.content {
-    border: 1px solid rebeccapurple;
-    padding: 1em;
+.footer {
+    width: 50%;
+    margin: 0 auto;
 }
 
-footer.container {
-    border: 1px solid red;
-    align-self: center;
+.photographer {
+    font-size: 0.85rem;
+    margin: 1em auto;
+}
+
+.photographer a {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.photographer a:hover {
+    color: #ff8d22;
+    font-weight: bold;
 }
 
 
@@ -140,12 +139,11 @@ footer.container {
     flex: 1 1 auto;
     width: 40%;
     padding: 1em;
-    flex-flow: column nowrap;
     justify-content: center;
 }
 
-.info-form>[class="container"] {
-    flex-flow: column;
+.info-form [class="container"] {
+    align-items: center;
 }
 
 .promo {
@@ -159,15 +157,8 @@ footer.container {
 }
 
 .form>div>* {
-    width: 50%;
-    max-width: 300px;
-    margin: 0.5em auto;
-}
-
-.form>div {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
+    max-width: 250px;
+    margin: 0.35em;
 }
 
 .form label {
@@ -183,7 +174,7 @@ footer.container {
 .form input[type="text"] {
     font-size: 1.5rem;
     text-align: center;
-    border: 2px solid #ff7b00;
+    border: 4px solid #ffb168;
     border-radius: 4px;
     padding: 0.25em;
     font-weight: bold;
@@ -205,52 +196,51 @@ footer.container {
 } */
 
 .form .button {
-    padding: 0.5em;
+    padding: 0.75em 1em;
     font-size: 1.25rem;
     font-weight: bold;
-    background: linear-gradient(0.75turn, #ff7b00, 80%, rgb(255, 217, 0));
+    background: linear-gradient(0.5turn, #ffb671, 50%, rgb(255, 240, 157));
     border: 4px solid #ff7b00;
     border-radius: 10px;
     color: white;
+    max-height: 50px;
+    max-width: 150px;
 }
 
 .form .button:hover {
-    padding: 0.75em;
-    background: linear-gradient(0.25turn, #ff7b00, 80%, rgb(255, 217, 0));
+    background: linear-gradient(0.5turn, #ff7b00, 75%, rgb(255, 217, 0));
 }
 
 .form .button:active {
     background: white;
     color: #ff7b00;
+    padding-right: 1.5em;
+    padding-left: 1.5em;
 }
 
 .footer {
     font-size: 0.75rem;
     text-align: center;
-    align-self: center;
-    position: absolute;
-    bottom: 1em;
 }
 
 @media (max-width: 760px) {
     .app.container {
+        /* changes from row to col */
         flex-flow: column nowrap;
-        min-height: 100vh;
     }
     .bg-image,
-    .info-form,
-    .content {
+    .info-form {
         width: 100%;
     }
     .bg-image {
-        max-height: 40%;
-        flex: 1 1 auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: center;
     }
     .info-form {
-        max-height: 60%;
-        flex: 2 0 auto;
-        justify-content: center;
-        z-index: 999;
+        min-height: 500px;
+        flex: 2 1 auto;
     }
     .brand {
         font-size: 3rem;
@@ -263,19 +253,14 @@ footer.container {
         background-color: rgba(0, 0, 0, 0.75);
     }
     .promo {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
     .call-to-action {
         margin: 1em auto;
     }
-    .photographer {
-        position: static;
-        align-self: center;
-        margin-top: 5rem;
-    }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1080px) {
     .brand {
         font-size: 8rem;
         margin: 0.5em auto 0.05em;
